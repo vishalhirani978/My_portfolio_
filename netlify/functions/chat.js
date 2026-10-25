@@ -4,7 +4,7 @@
 // SETUP:
 // 1. In the Netlify dashboard: Site settings -> Environment variables
 //    Add GROQ_API_KEY = gsk_... (your Groq key)
-//    Optionally add GROQ_MODEL to override the default model (default: llama-3.1-8b-instant).
+//    Optionally add GROQ_MODEL to override the auto-detected model.
 // 2. Commit this file at netlify/functions/chat.js and netlify.toml at the repo root.
 // 3. Netlify auto-detects the functions folder and deploys it alongside your site.
 
@@ -33,6 +33,35 @@ export async function handler(event) {
   }
 
   try {
+    // Auto-discover models available to this specific Groq key
+    let selectedModel = process.env.GROQ_MODEL;
+    let availableModels = [];
+
+    try {
+      const modelsRes = await fetch("https://api.groq.com/openai/v1/models", {
+        headers: { "Authorization": `Bearer ${GROQ_API_KEY}` }
+      });
+      if (modelsRes.ok) {
+        const modelsData = await modelsRes.json();
+        availableModels = (modelsData.data || []).map(m => m.id);
+      }
+    } catch (_) {
+      // Network/parse error while listing models, fallback gracefully
+    }
+
+    if (!selectedModel) {
+      const preferred = [
+        "llama-3.3-70b-versatile",
+        "llama-3.1-8b-instant",
+        "qwen/qwen3.8-27b",
+        "mixtral-8x7b-32768",
+        "gemma2-9b-it"
+      ];
+      selectedModel = preferred.find(m => availableModels.includes(m))
+        || availableModels.find(id => !id.includes("whisper") && !id.includes("guard"))
+        || "llama-3.1-8b-instant";
+    }
+
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -40,7 +69,7 @@ export async function handler(event) {
         "Authorization": `Bearer ${GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || "llama-3.1-8b-instant",
+        model: selectedModel,
         messages,
         max_tokens: 500,
         temperature: 0.7
@@ -50,9 +79,12 @@ export async function handler(event) {
     const data = await response.json();
 
     if (!response.ok) {
+      const details = availableModels.length > 0
+        ? ` | Models available for your key: [${availableModels.join(", ")}]`
+        : "";
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: data.error?.message || "Groq request failed" })
+        body: JSON.stringify({ error: (data.error?.message || "Groq request failed") + details })
       };
     }
 
