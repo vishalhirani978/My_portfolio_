@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+
+<link rel="icon" type="image/png" sizes="32x32"
+      href="favicon/favicon-32x32.png">
+
+<link rel="icon" type="image/png" sizes="16x16"
+      href="favicon/favicon-16x16.png">
+
+<link rel="apple-touch-icon"
+      href="favicon/apple-touch-icon.png">
+
+<link rel="manifest"
+      href="favicon/site.webmanifest">
+
+<title>Vishal Hirani | AI Student &amp; Builder – ML, RAG &amp; Agentic AI</title>
+<meta name="description" content="Vishal Hirani is an AI student and builder from Nawabshah, Pakistan, working on machine learning, RAG, voice agents and full-stack AI tools. See live projects and code.">
+<link rel="canonical" href="https://vishalhirani.netlify.app/">
+<meta name="author" content="Vishal Hirani">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Google Search Console verification: paste your tag here after Step 6 -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vishal Hirani | AI Student &amp; Builder">
+<meta property="og:description" content="Vishal Hirani is an AI student and builder from Nawabshah, Pakistan, working on machine learning, RAG, voice agents and full-stack AI tools. See live projects and code.">
+<meta property="og:image" content="https://vishalhirani.netlify.app/og-image.png">
+<meta property="og:url" content="https://vishalhirani.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vishal Hirani",
+  "jobTitle": "AI Student & Builder",
+  "url": "https://vishalhirani.netlify.app/",
+  "image": "https://vishalhirani.netlify.app/portrait-hero.webp",
+  "sameAs": [
+    "https://github.com/vishalhirani978",
+    "https://www.linkedin.com/in/vishal-hirani-9a4093331",
+    "https://www.instagram.com/vishalhirani.777"
+  ],
+  "knowsAbout": ["Machine Learning", "RAG Pipelines", "Agentic AI", "Voice AI", "Deep Learning", "Full Stack Development"],
+  "address": { "@type": "PostalAddress", "addressLocality": "Nawabshah", "addressCountry": "PK" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f4f4f4;
+  --surface: #ffffff;
+  --text: #111111;
+  --text-dim: #6d6d6d;
+  --border: #e3e3e3;
+  --accent: #111111;
+  --accent-2: #4a4a4a;
+  --accent-soft: #f0f0f0;
+  --on-accent: #ffffff;
+  --shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.14);
+  --shadow-sm: 0 10px 24px -14px rgba(0, 0, 0, 0.14);
+  --radius-lg: 26px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --display: 'Poppins', 'Inter', sans-serif;
+  --hello: 'Inter Tight', 'Inter', -apple-system, sans-serif; /* hero "Hello" font, see swap options */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.65;
+  transition: background 0.35s ease, color 0.35s ease;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+ul { list-style: none; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* ===== NAV (transparent on top, bar appears on scroll) ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem calc(6% + 2.4rem);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .35s ease, border-color .35s ease, padding .35s ease, box-shadow .35s ease;
+}
+nav.scrolled {
+  padding-top: .95rem;
+  padding-bottom: .95rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+  box-shadow: 0 10px 30px -22px rgba(0,0,0,.25);
+}
+.nav-right { display: flex; align-items: center; gap: .7rem; }
+
+.nav-links {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: color 0.25s ease;
+  padding: 0.2rem 0;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a.active { color: var(--text); }
+
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ===== HERO (editorial / minimal) ===== */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh;
+  will-change: opacity;
+  padding: 0 6% 0 calc(6% + 2.4rem);
+  display: flex; align-items: center;
+}
+
+.hero-copy { position: relative; z-index: 2; padding: 10rem 0 5rem; }
+
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.85); } }
+
+.hero h1 {
+  font-family: var(--hello);
+  font-size: clamp(5.5rem, 17vw, 15rem);
+  font-weight: 300; letter-spacing: -0.055em; line-height: .86;
+  margin: 0 0 1.4rem;
+}
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 500;
+  max-width: 34ch; margin-bottom: 2rem;
+}
+.hero-sub .cursor {
+  display: inline-block; width: 2px; height: 1em; background: var(--text);
+  margin-left: 3px; vertical-align: -0.15em; animation: blink 1.1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  font-family: var(--sans); font-size: .92rem; font-weight: 600;
+  padding: .9rem 1.7rem; border-radius: 999px; text-decoration: none;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  display: inline-flex; align-items: center; gap: .5rem;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn-primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.btn-outline { background: transparent; }
+.btn-outline:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+/* Portrait: transparent cutout, bleeds off the bottom-right edge */
+.hero-portrait {
+  position: absolute; right: 5vw; bottom: -3vh; z-index: 1;
+  height: min(91vh, 50vw); width: auto;
+  mix-blend-mode: multiply;
+  pointer-events: none; user-select: none;
+  animation: rise .9s ease both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+.social-row { display: flex; gap: .7rem; }
+.social-icon {
+  width: 2.3rem; height: 2.3rem; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); transition: all .25s ease;
+}
+.social-icon:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+.social-icon svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+/* ===== DIVIDER STRIP (between hero and About) ===== */
+.strip {
+  background: var(--accent);
+  color: var(--on-accent);
+  overflow: hidden;
+  padding: 1.05rem 0;
+}
+.strip-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+.strip-track span {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.strip-track span::after {
+  content: "\2726";            /* ✦ separator */
+  margin: 0 2.2rem;
+  opacity: .45;
+  font-size: .7rem;
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .strip-track { animation: none; } }
+
+/* ===== SECTION SHARED ===== */
+section {
+  padding: clamp(4rem, 8vw, 7rem) 6%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.section-head { margin-bottom: 3.2rem; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+
+.section-head h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: center; /* Changed from 'start' to 'center' */
+}
+
+.about-text p { 
+  color: var(--text-dim); 
+  margin-bottom: 1.2rem; 
+}
+.about-text p:first-child {
+  margin-top: 0; /* Ensures no extra spacing at the top */
+}
+.about-text p:last-child {
+  margin-bottom: 0; /* Prevents trailing margin from affecting alignment */
+}
+.about-text strong { color: var(--text); font-weight: 600; }
+
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.info-card .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.info-card .row:last-child { border-bottom: none; }
+.info-card .row span:first-child { color: var(--text-dim); }
+.info-card .row span:last-child { text-align: right; font-weight: 500; }
+
+/* ===== PROJECTS ===== */
+.projects-grid { display: grid; gap: 1.6rem; }
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.project-card.featured {
+  grid-template-columns: 1fr;
+  border-color: var(--accent);
+  position: relative;
+  background: linear-gradient(160deg, var(--accent-soft), var(--surface) 55%);
+}
+
+.project-card.featured::before {
+  content: "FEATURED";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0 var(--radius-lg) 0 var(--radius-md);
+}
+
+.project-num {
+  font-family: var(--display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+}
+
+.project-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.6rem; }
+.project-card p { color: var(--text-dim); margin-bottom: 1.1rem; font-size: 0.95rem; }
+
+.project-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+
+.project-features span {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+.project-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+.project-links a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+  transition: color 0.25s ease;
+}
+.project-links a:hover { color: var(--accent); }
+
+/* ===== EXPERIENCE / TIMELINE ===== */
+.timeline { border-left: 2px solid var(--border); padding-left: 2.2rem; }
+
+.timeline-item { position: relative; padding-bottom: 2.6rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.56rem;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.timeline-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.timeline-item h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 0.2rem; }
+.timeline-item h4 { font-size: 0.92rem; color: var(--text-dim); font-weight: 500; margin-bottom: 0.8rem; }
+
+.timeline-item ul { color: var(--text-dim); font-size: 0.93rem; }
+.timeline-item li { padding-left: 1.3rem; position: relative; margin-bottom: 0.5rem; }
+.timeline-item li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+/* ===== CONTACT ===== */
+.contact-section {
+  text-align: center;
+  background: var(--bg-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(3rem, 7vw, 5rem) 6%;
+}
+
+.contact-section .section-head { display: flex; flex-direction: column; align-items: center; }
+.contact-section p { color: var(--text-dim); max-width: 520px; margin: 0 auto 2.2rem; }
+
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+  margin-top: 2.6rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  text-align: left;
+}
+.hidden-field { position: absolute; left: -9999px; top: -9999px; }
+.form-row { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.form-row input { flex: 1; min-width: 200px; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.25s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--accent); }
+.contact-form button { align-self: center; margin-top: 0.3rem; }
+.contact-form button:disabled { opacity: 0.7; cursor: not-allowed; }
+.form-status { text-align: center; font-size: 0.88rem; min-height: 1.2em; }
+.form-status.success { color: #2e9e5b; }
+.form-status.error { color: var(--accent); }
+
+footer {
+  text-align: center;
+  padding: 2.4rem 6%;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.footer-name { font-weight: 600; color: var(--text); }
+.footer-quote { display: inline-block; margin-top: 0.3rem; }
+
+/* ===== RESPONSIVE — TABLET ===== */
+@media (max-width: 980px) {
+  .hero { flex-direction: column; align-items: flex-start; min-height: auto; padding: 0 6%; }
+  .hero-copy { padding: 6rem 0 0; }
+  .hero-portrait { position: relative; width: min(100%, 720px); height: auto; right: 0; bottom: 0; margin: 1.5rem 0 0 auto; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ===== RESPONSIVE — MOBILE ===== */
+@media (max-width: 640px) {
+  nav { padding-left: 5%; padding-right: 5%; }
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem 6%;
+    gap: 1rem;
+    z-index: 199;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-links.open a { font-size: 1rem; padding: 0.4rem 0; }
+  .hero { padding: 0 5%; }
+  .hero h1 { font-size: clamp(5rem, 30vw, 9rem); }
+  .hero-cta { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+  .hero-cta .btn { justify-content: center; }
+  section { padding: 3.2rem 5%; }
+  .section-head { margin-bottom: 2rem; }
+  .info-card { font-size: 0.85rem; }
+  .info-card .row { flex-direction: column; gap: 0.2rem; padding: 0.75rem 0; }
+  .info-card .row span:last-child { text-align: left; color: var(--text); }
+  .project-card { grid-template-columns: 1fr; padding: 1.6rem; gap: 1rem; }
+  .project-num { display: none; }
+  .timeline { padding-left: 1.5rem; }
+  .timeline-item::before { left: -1.95rem; width: 12px; height: 12px; }
+  .contact-links { flex-direction: column; align-items: center; }
+  .contact-links .btn { width: 100%; max-width: 320px; justify-content: center; }
+  footer { font-size: 0.78rem; padding: 1.8rem 5%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ===== AI CHAT WIDGET ===== */
+.chat-fab {
+  position: fixed;
+  bottom: 1.6rem;
+  left: 1.6rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 14px 30px -10px color-mix(in srgb, var(--accent) 65%, transparent);
+  z-index: 300;
+  transition: transform 0.25s ease;
+}
+.chat-fab:hover { transform: scale(1.08); }
+.chat-fab svg { width: 1rem; height: 1rem; fill: var(--on-accent); }
+
+.chat-panel {
+  position: fixed;
+  bottom: 4.6rem;
+  left: 1.6rem;
+  width: min(380px, 92vw);
+  height: min(560px, 74vh);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 300;
+}
+.chat-panel.open { display: flex; }
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+.chat-header .title { font-family: var(--display); font-weight: 700; font-size: 0.95rem; }
+.chat-header .title small { display: block; font-weight: 400; font-size: 0.72rem; color: var(--text-dim); }
+.chat-header-actions { display: flex; gap: 0.5rem; }
+.chat-icon-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.chat-icon-btn:hover { color: var(--text); border-color: var(--accent); }
+.chat-icon-btn.active { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+}
+.chat-msg { max-width: 84%; padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); line-height: 1.5; white-space: pre-wrap; }
+.chat-msg.user { align-self: flex-end; background: var(--accent); color: var(--on-accent); border-bottom-right-radius: 4px; }
+.chat-msg.bot { align-self: flex-start; background: var(--bg-soft); color: var(--text); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+.chat-msg.typing { align-self: flex-start; color: var(--text-dim); font-style: italic; font-size: 0.82rem; }
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.chat-input-row input {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  font-size: 0.86rem;
+  font-family: var(--sans);
+  outline: none;
+}
+.chat-input-row input:focus { border-color: var(--accent); }
+.chat-send-btn, .chat-mic-btn {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.chat-mic-btn { background: var(--bg-soft); color: var(--text-dim); border: 1px solid var(--border); }
+.chat-mic-btn svg { width: 1.05rem; height: 1.05rem; }
+.chat-mic-btn.listening { background: var(--accent); color: var(--on-accent); border-color: var(--accent); animation: pulse 1.2s infinite; }
+
+@media (max-width: 640px) {
+  .chat-panel { right: 0.8rem; left: 0.8rem; width: auto; bottom: 4.3rem; }
+  .chat-fab { left: 1.2rem; bottom: 1.2rem; }
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="social-row">
+      <a class="social-icon" href="https://github.com/vishalhirani978" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.67.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a>
+      <a class="social-icon" href="https://www.linkedin.com/in/vishal-hirani-9a4093331" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.48v6.26ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+      </a>
+      <a class="social-icon" href="https://www.instagram.com/vishalhirani.777" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.79-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-copy">
+    <h1>Hello<span class="sr-only"> – I'm Vishal Hirani, AI Student &amp; Builder</span></h1>
+    <p class="hero-sub">— It’s Vishal Hirani, AI Student &amp; Builder.<span class="cursor"></span></p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="vishal-hirani-resume.pdf" class="btn btn-outline" download>Resume</a>
+    </div>
+  </div>
+
+  <img class="hero-portrait" src="portrait-hero.webp" alt="Vishal Hirani, AI Student &amp; Builder" width="1024" height="682" fetchpriority="high">
+
+  </header>
+
+<!-- DIVIDER STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Machine Learning</span><span>RAG Pipelines</span><span>Agentic AI</span><span>Voice AI</span><span>FastAPI</span><span>Python</span><span>Deep Learning</span><span>Full Stack Development</span>
+    <span>Machine Learning</span><span>RAG Pipelines</span><span>Agentic AI</span><span>Voice AI</span><span>FastAPI</span><span>Python</span><span>Deep Learning</span><span>Full Stack Development</span>
+    <span>Machine Learning</span><span>RAG Pipelines</span><span>Agentic AI</span><span>Voice AI</span><span>FastAPI</span><span>Python</span><span>Deep Learning</span><span>Full Stack Development</span>
+    <span>Machine Learning</span><span>RAG Pipelines</span><span>Agentic AI</span><span>Voice AI</span><span>FastAPI</span><span>Python</span><span>Deep Learning</span><span>Full Stack Development</span>
+  </div>
+</div>
+
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-head reveal">
+    <div class="section-tag">About</div>
+    <h2 class="sr-only">About Vishal Hirani, AI Student in Nawabshah</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        <strong>Vishal Hirani</strong> is a third-year BS Artificial Intelligence student at Quaid-e-Awam University of Engineering, Science &amp; Technology (QUEST), Nawabshah.
+      </p>
+      <p>
+        He builds AI-powered tools that solve real problems, from a Karachi crime-risk navigation app to multilingual news scoring and voice assistants. He recently completed an AI/ML internship at Pakistan Television Corporation (PTV) and is currently learning Machine Learning, Agentic AI, LangChain and RAG pipelines.
+      </p>
+      <p>
+        <strong>Core stack:</strong> Python, TypeScript, JavaScript, Java, C, PyTorch, TensorFlow, FastAPI, React, Next.js, Node.js, Docker, Git, Vercel, Figma.
+      </p>
+    </div>
+    <div class="info-card reveal">
+      <div class="row"><span>Location</span><span>Nawabshah, Sindh, Pakistan</span></div>
+      <div class="row"><span>Education</span><span>BS Artificial Intelligence, QUEST (ongoing)</span></div>
+      <div class="row"><span>Email</span><span>vishalhirani2007@gmail.com</span></div>
+      <div class="row"><span>Internship</span><span>AI/ML Intern, PTV Karachi</span></div>
+      <div class="row"><span>GitHub</span><span>31 repositories, 84 followers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-head reveal">
+    <div class="section-tag">Projects</div>
+    <h2>Featured work</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card featured reveal">
+      <div>
+        <h3>SafeRoute PK</h3>
+        <p>
+          Karachi crime-risk navigation app. Features a hybrid Random Forest + RAG scoring system 
+          built on scraped news data to assess neighborhood safety and suggest safer transit routes.
+        </p>
+        <div class="project-features">
+          <span>Python</span>
+          <span>Machine Learning</span>
+          <span>RAG Pipeline</span>
+          <span>Random Forest</span>
+          <span>Web Scraping</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>PK News Relevance Dashboard</h3>
+        <p>
+          Full-stack Pakistani news relevance scorer (Dawn + Ummat) using LaBSE and CLIP for multilingual, 
+          multimodal matching across text and images. Built and presented at QUEST's AI Department exhibition.
+        </p>
+        <div class="project-features">
+          <span>FastAPI</span>
+          <span>LaBSE</span>
+          <span>CLIP</span>
+          <span>SQLite</span>
+          <span>Multimodal AI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>CognitoFlow</h3>
+        <p>
+          Exam analysis and revision tool. Upload university past papers (PDF or text), automatically 
+          extract questions, and discover high-frequency topic trends with AI.
+        </p>
+        <div class="project-features">
+          <span>TypeScript</span>
+          <span>AI / NLP</span>
+          <span>PDF Extraction</span>
+          <span>Trend Analytics</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Live Demo →</a>
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>AI Video Editing SaaS (PAI-Project)</h3>
+        <p>
+          High-performance backend for an AI video-editing platform. Architected the Gemini API integration 
+          and Whisper speech-to-text transcription engine as part of a university engineering team.
+        </p>
+        <div class="project-features">
+          <span>FastAPI</span>
+          <span>Gemini API</span>
+          <span>Whisper</span>
+          <span>Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>SUR Voice Assistant</h3>
+        <p>
+          Python desktop AI assistant capable of natural conversation, real-time weather reports, 
+          breaking news summaries, and multimedia system control using speech recognition.
+        </p>
+        <div class="project-features">
+          <span>Python</span>
+          <span>Speech Recognition</span>
+          <span>Desktop Automation</span>
+          <span>Audio Processing</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>Pixel PM</h3>
+        <p>
+          Windows desktop AI assistant featuring a playful pixel-art overlay that delivers GitHub 
+          notifications, PR updates, and reminders through animated thought bubbles.
+        </p>
+        <div class="project-features">
+          <span>Electron</span>
+          <span>Desktop App</span>
+          <span>Pixel Art UI</span>
+          <span>GitHub API</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>EASY MED</h3>
+        <p>
+          Java OOP university web portal connecting patients with verified healthcare practitioners online 
+          with real-time appointment booking and consultation management.
+        </p>
+        <div class="project-features">
+          <span>Java (OOP)</span>
+          <span>HTML / CSS</span>
+          <span>Healthcare Portal</span>
+          <span>Appointment Scheduling</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <h3>Voice News Agent</h3>
+        <p>
+          Bilingual Urdu/English conversational voice news agent built for the AssemblyAI Voice Agent Hackathon, 
+          fetching, summarizing, and speaking real-time news updates.
+        </p>
+        <div class="project-features">
+          <span>Python</span>
+          <span>AssemblyAI</span>
+          <span>Voice AI</span>
+          <span>Urdu &amp; English</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener">Source Code →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-head reveal">
+    <div class="section-tag">Experience</div>
+    <h2>Where I've worked &amp; studied</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Jun 2026 — Jul 2026</div>
+      <h3>AI/ML Intern</h3>
+      <h4>Pakistan Television Corporation (PTV), Karachi (IT Department)</h4>
+      <ul>
+        <li>Engineered and evaluated machine learning automation pipelines to assist media processing workflows and archive indexing.</li>
+        <li>Implemented speech-to-text models and NLP extraction techniques for broadcast content transcription and topic categorization.</li>
+        <li>Assisted senior IT and engineering teams with data curation, preprocessing pipelines, and model evaluation metrics.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Ongoing</div>
+      <h3>BS Artificial Intelligence</h3>
+      <h4>Quaid-e-Awam University of Engineering, Science &amp; Technology (QUEST)</h4>
+      <ul>
+        <li>Third-year undergraduate coursework and practical projects in Machine Learning, Deep Learning, Natural Language Processing, and Agentic AI.</li>
+        <li>Built and presented multimodal systems at the QUEST AI Department exhibition, including the PK News Relevance Dashboard.</li>
+        <li>Active hands-on independent learning: LangChain, RAG pipelines, and 100-days-of-ML challenge.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-section reveal">
+    <div class="section-head">
+      <div class="section-tag">Contact</div>
+      <h2>Let's build something</h2>
+    </div>
+    <p>
+      I'm open to AI/ML internships, collaborations, and hackathon teams. If you're building something with AI, I'd love to connect.
+    </p>
+
+    <div class="contact-links" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+      <a href="mailto:vishalhirani2007@gmail.com" class="btn btn-primary">Email Me ↗</a>
+      <a href="https://github.com/vishalhirani978" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/vishal-hirani-9a4093331" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="https://www.instagram.com/vishalhirani.777" target="_blank" rel="noopener" class="btn btn-outline">Instagram ↗</a>
+    </div>
+
+    <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hidden-field"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+      <div class="form-row">
+        <input type="text" name="name" id="cfName" placeholder="Your name" required>
+        <input type="email" name="email" id="cfEmail" placeholder="Your email" required>
+      </div>
+      <textarea name="message" id="cfMessage" rows="5" placeholder="What's on your mind?" required></textarea>
+      <button type="submit" class="btn btn-primary" id="cfSubmit">Send Message</button>
+      <p class="form-status" id="cfStatus"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+(function() {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('cfStatus');
+  const submitBtn = document.getElementById('cfSubmit');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    const data = new URLSearchParams(new FormData(form)).toString();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data
+    })
+      .then(() => {
+        status.textContent = "Thanks, your message is in! I'll get back to you soon.";
+        status.classList.add('success');
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Something went wrong. Please email me directly instead.";
+        status.classList.add('error');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+  });
+})();
+</script>
+
+<footer>
+  <span class="footer-name">© 2026 Vishal Hirani</span>
+  <br>
+  <span class="footer-quote">Building things that are actually useful</span>
+</footer>
+
+<script>
+  // Nav bar appears once you scroll
+  (function () {
+    const nav = document.querySelector('nav');
+    const set = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+    window.addEventListener('scroll', set, { passive: true });
+    set();
+  })();
+
+  // Slow hero fade on scroll
+  (function () {
+    const hero = document.querySelector('.hero');
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let ticking = false;
+    function update() {
+      const p = Math.min(Math.max(window.scrollY / (hero.offsetHeight * 0.85), 0), 1);
+      hero.style.opacity = (1 - p).toFixed(3);
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  })();
+
+  // Mobile nav
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Scroll reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Active nav link highlighting
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navAnchors.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  sections.forEach(sec => navObserver.observe(sec));
+</script>
+
+<!-- AI CHAT WIDGET -->
+<button class="chat-fab" id="chatFab" aria-label="Open chat">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.62 1.31 4.97 3.39 6.57-.15 1.32-.6 2.71-1.32 3.9a.5.5 0 0 0 .58.74c1.86-.53 3.42-1.36 4.53-2.15.9.2 1.84.31 2.82.31 5.52 0 10-3.94 10-8.8S17.52 2 12 2Z"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="title">Chat with Vishal<small>An AI agent replying for him</small></div>
+    <div class="chat-header-actions">
+      <button class="chat-icon-btn" id="voiceOutToggle" aria-label="Toggle spoken replies" title="Toggle spoken replies">🔊</button>
+      <button class="chat-icon-btn" id="chatClose" aria-label="Close chat">✕</button>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey, I'm Vishal. Ask me about my projects, skills or internship.</div>
+  </div>
+  <div class="chat-input-row">
+    <button class="chat-mic-btn" id="chatMic" aria-label="Voice input" title="Speak your question">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+    </button>
+    <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off">
+    <button class="chat-send-btn" id="chatSend" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const SYSTEM_PROMPT = `You are chatting with a visitor on Vishal Hirani's personal portfolio website. Speak AS Vishal, in the first person ("I", "my"), like he's personally answering — warm, casual, confident, no corporate or robotic phrasing. Never start replies with "As an AI..." or similar disclaimers.
+
+Exception: if the visitor directly and explicitly asks whether they're talking to a real person, a bot, or an AI, be honest — say you're an AI assistant trained on Vishal's information, answering on his behalf, and that they can reach the real Vishal via the contact section or email. Do this only when asked directly; otherwise just talk naturally as Vishal.
+
+Facts about Vishal (use "I/my" when stating these):
+- I'm an AI Student & Builder, currently in my third year studying BS Artificial Intelligence at Quaid-e-Awam University of Engineering, Science & Technology (QUEST), Nawabshah.
+- I build practical AI-powered tools that solve real problems, from a Karachi crime-risk navigation app to multilingual news scoring and voice assistants.
+- Based in Nawabshah, Sindh, Pakistan. Email: vishalhirani2007@gmail.com
+- Experience: AI/ML Intern at Pakistan Television Corporation (PTV), Karachi (IT Department) from Jun 2026 to Jul 2026, working on machine learning automation pipelines and speech-to-text / NLP models for broadcast workflows.
+- Core Stack: Python, TypeScript, JavaScript, Java, C, PyTorch, TensorFlow, FastAPI, React, Next.js, Node.js, Docker, Git, Vercel, Figma, LangChain, RAG pipelines, Gemini API, Whisper.
+- Projects:
+  1. SafeRoute PK: Karachi crime-risk navigation app using a hybrid Random Forest and RAG scoring pipeline based on scraped news reports.
+  2. PK News Relevance Dashboard: Full-stack Pakistani news relevance scorer using LaBSE and CLIP for multimodal matching, presented at the QUEST AI Department exhibition.
+  3. CognitoFlow: Exam analysis tool that extracts questions from past papers and detects high-frequency topic patterns.
+  4. AI Video Editing SaaS (PAI-Project): Backend integrating Gemini API and Whisper speech transcription for video creation.
+  5. SUR Voice Assistant: Desktop AI assistant for conversational interaction, real-time weather, news, and system controls.
+  6. Pixel PM: Windows desktop AI companion with a pixel-art overlay that delivers GitHub notifications and reminders in thought bubbles.
+  7. EASY MED: Java OOP online healthcare appointment booking platform.
+  8. Voice News Agent: Bilingual Urdu/English conversational voice news agent developed for the AssemblyAI Voice Agent Hackathon.
+- Open to: AI/ML internships, collaborations, and hackathon teams. GitHub: github.com/vishalhirani978, LinkedIn: linkedin.com/in/vishal-hirani-9a4093331, Instagram: instagram.com/vishalhirani.777
+
+Keep answers short (2-4 sentences) unless asked for detail. Write in plain flowing sentences — never use dashes, hyphens, em dashes, or bullet points in your replies, even for lists (use words like "and" or separate sentences instead). If asked something not covered above, say you're not 100% sure and suggest reaching out via the contact section or email — don't invent facts. Stay in the first-person Vishal voice throughout, including for this fallback.`;
+
+  const fab = document.getElementById('chatFab');
+  const panel = document.getElementById('chatPanel');
+  const closeBtn = document.getElementById('chatClose');
+  const messagesEl = document.getElementById('chatMessages');
+  const input = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+  const micBtn = document.getElementById('chatMic');
+  const voiceOutToggle = document.getElementById('voiceOutToggle');
+
+  let history = [{ role: 'system', content: SYSTEM_PROMPT }];
+  let speakReplies = false;
+  let isSending = false;
+
+  fab.addEventListener('click', () => {
+    panel.classList.add('open');
+    fab.style.display = 'none';
+    input.focus();
+  });
+  closeBtn.addEventListener('click', () => {
+    panel.classList.remove('open');
+    fab.style.display = 'flex';
+  });
+
+  function addMessage(text, role) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + (role === 'user' ? 'user' : 'bot');
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  function speak(text) {
+    if (!speakReplies || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 1;
+    window.speechSynthesis.speak(utter);
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || isSending) return;
+    isSending = true;
+    input.value = '';
+    addMessage(text, 'user');
+    history.push({ role: 'user', content: text });
+
+    const typingEl = document.createElement('div');
+    typingEl.className = 'chat-msg typing';
+    typingEl.textContent = 'Thinking...';
+    messagesEl.appendChild(typingEl);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      const res = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      const data = await res.json();
+      typingEl.remove();
+      const rawReply = data.reply || data.error || "Something went wrong — please try again.";
+      const reply = rawReply
+        .replace(/^\s*[-–—•]\s+/gm, '')
+        .replace(/\s*[–—]\s*/g, ' ');
+      addMessage(reply, 'bot');
+      history.push({ role: 'assistant', content: reply });
+      speak(reply);
+    } catch (err) {
+      typingEl.remove();
+      addMessage("I couldn't reach the server. Please try again in a moment.", 'bot');
+    } finally {
+      isSending = false;
+    }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+  voiceOutToggle.addEventListener('click', () => {
+    speakReplies = !speakReplies;
+    voiceOutToggle.classList.toggle('active', speakReplies);
+    voiceOutToggle.textContent = speakReplies ? '🔈' : '🔊';
+    if (!speakReplies && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+  });
+
+  // Voice input (Web Speech API) — Chrome/Edge only
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    let listening = false;
+
+    micBtn.addEventListener('click', () => {
+      if (listening) { recognition.stop(); return; }
+      recognition.start();
+    });
+    recognition.addEventListener('start', () => {
+      listening = true;
+      micBtn.classList.add('listening');
+    });
+    recognition.addEventListener('end', () => {
+      listening = false;
+      micBtn.classList.remove('listening');
+    });
+    recognition.addEventListener('result', (e) => {
+      const transcript = e.results[0][0].transcript;
+      input.value = transcript;
+      sendMessage();
+    });
+    recognition.addEventListener('error', () => {
+      listening = false;
+      micBtn.classList.remove('listening');
+    });
+  } else {
+    micBtn.style.display = 'none';
+  }
+})();
+</script>
+
+</body>
+</html>
