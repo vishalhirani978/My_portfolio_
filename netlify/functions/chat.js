@@ -1,10 +1,10 @@
-﻿// Netlify serverless function: proxies chat requests to Groq.
+// Netlify serverless function: proxies chat requests to Groq.
 // The API key stays here, on the server, and is never sent to the browser.
 //
 // SETUP:
 // 1. In the Netlify dashboard: Site settings -> Environment variables
 //    Add GROQ_API_KEY = gsk_... (your Groq key)
-//    Optionally add GROQ_MODEL to override the default model (default: llama-3.3-70b-versatile).
+//    Optionally add GROQ_MODEL to override the default model (default: llama-3.1-8b-instant).
 // 2. Commit this file at netlify/functions/chat.js and netlify.toml at the repo root.
 // 3. Netlify auto-detects the functions folder and deploys it alongside your site.
 
@@ -40,7 +40,7 @@ export async function handler(event) {
         "Authorization": `Bearer ${GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+        model: process.env.GROQ_MODEL || "llama-3.1-8b-instant",
         messages,
         max_tokens: 500,
         temperature: 0.7
