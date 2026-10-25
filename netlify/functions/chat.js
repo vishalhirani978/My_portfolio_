@@ -1,10 +1,10 @@
-// Netlify serverless function: proxies chat requests to OpenRouter.
+﻿// Netlify serverless function: proxies chat requests to Groq.
 // The API key stays here, on the server, and is never sent to the browser.
 //
 // SETUP:
 // 1. In the Netlify dashboard: Site settings -> Environment variables
-//    Add OPENROUTER_API_KEY = sk-or-... (your OpenRouter key)
-//    Optionally add OPENROUTER_MODEL to override the default model below.
+//    Add GROQ_API_KEY = gsk_... (your Groq key)
+//    Optionally add GROQ_MODEL to override the default model (default: llama-3.3-70b-versatile).
 // 2. Commit this file at netlify/functions/chat.js and netlify.toml at the repo root.
 // 3. Netlify auto-detects the functions folder and deploys it alongside your site.
 
@@ -13,11 +13,11 @@ export async function handler(event) {
     return { statusCode: 405, body: JSON.stringify({ error: "Method Not Allowed" }) };
   }
 
-  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-  if (!OPENROUTER_API_KEY) {
+  const GROQ_API_KEY = process.env.GROQ_API_KEY;
+  if (!GROQ_API_KEY) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Server is missing OPENROUTER_API_KEY. Add it in Netlify env vars." })
+      body: JSON.stringify({ error: "Server is missing GROQ_API_KEY. Add it in Netlify env vars." })
     };
   }
 
@@ -33,17 +33,14 @@ export async function handler(event) {
   }
 
   try {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        // OpenRouter asks for these so it can attribute traffic to your site/app
-        "HTTP-Referer": "https://vishalhirani.netlify.app",
-        "X-Title": "Vishal Hirani Portfolio Assistant"
+        "Authorization": `Bearer ${GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: process.env.OPENROUTER_MODEL || "openrouter/free",
+        model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
         messages,
         max_tokens: 500,
         temperature: 0.7
@@ -55,7 +52,7 @@ export async function handler(event) {
     if (!response.ok) {
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: data.error?.message || "OpenRouter request failed" })
+        body: JSON.stringify({ error: data.error?.message || "Groq request failed" })
       };
     }
 
